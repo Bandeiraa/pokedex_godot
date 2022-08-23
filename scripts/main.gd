@@ -87,7 +87,6 @@ func get_pokemon_image(_result: int, _response_code: int, _headers: PoolStringAr
 	current_pokemon_index += 1
 	if current_index == request_gap + 1:
 		current_index = 0
-		request_gap = request_gap + request_gap
 		pokemon_list_request()
 		return
 		
