@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scripts/main.gd" type="Script" id=1]
+[ext_resource path="res://scenes/slot.tscn" type="PackedScene" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="Theme" id=6]
+VScrollBar/styles/grabber = SubResource( 1 )
+VScrollBar/styles/grabber_highlight = SubResource( 2 )
+VScrollBar/styles/grabber_pressed = SubResource( 3 )
+VScrollBar/styles/scroll = SubResource( 4 )
+VScrollBar/styles/scroll_focus = SubResource( 5 )
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+slot = ExtResource( 2 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.180392, 0.211765, 0.282353, 1 )
+
+[node name="Request" type="HTTPRequest" parent="."]
+
+[node name="ScrollList" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 6 )
+scroll_horizontal_enabled = false
+
+[node name="VContainer" type="VBoxContainer" parent="ScrollList"]
+
+[connection signal="request_completed" from="Request" to="." method="initial_request"]

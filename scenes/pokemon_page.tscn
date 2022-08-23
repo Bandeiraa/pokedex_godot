@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/thaleah_fat.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/pokemon_page.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[node name="Page" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.180392, 0.211765, 0.282353, 1 )
+
+[node name="PokemonPage" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VContainer" type="VBoxContainer" parent="PokemonPage"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -48.0
+margin_top = 15.0
+margin_right = 48.0
+margin_bottom = 130.0
+
+[node name="Image" type="TextureRect" parent="PokemonPage/VContainer"]
+margin_right = 96.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+
+[node name="PokemonName" type="Label" parent="PokemonPage/VContainer"]
+margin_top = 100.0
+margin_right = 96.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 96, 15 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+align = 1
+valign = 1
+
+[node name="BackButton" type="Button" parent="PokemonPage"]
+margin_left = 2.0
+margin_top = 1.0
+margin_right = 47.0
+margin_bottom = 22.0
+focus_mode = 0
+custom_fonts/font = SubResource( 1 )
+enabled_focus_mode = 0
+text = "Back"
+flat = true
+align = 0
+
+[node name="InfoContainer" type="VBoxContainer" parent="PokemonPage"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -80.0
+margin_top = -175.0
+margin_right = 80.0
+margin_bottom = -15.0
+rect_min_size = Vector2( 160, 160 )
+
+[node name="Type" type="Label" parent="PokemonPage/InfoContainer"]
+margin_right = 160.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 160, 15 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+autowrap = true
+
+[node name="Height" type="Label" parent="PokemonPage/InfoContainer"]
+margin_top = 19.0
+margin_right = 160.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 160, 0 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+valign = 1
+
+[node name="Weight" type="Label" parent="PokemonPage/InfoContainer"]
+margin_top = 38.0
+margin_right = 160.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 160, 0 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+valign = 1
+
+[connection signal="pressed" from="PokemonPage/BackButton" to="." method="on_back_button_pressed"]

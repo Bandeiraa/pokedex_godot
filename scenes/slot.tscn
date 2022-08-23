@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/slot.gd" type="Script" id=1]
+[ext_resource path="res://assets/thaleah_fat.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scenes/pokemon_page.tscn" type="PackedScene" id=3]
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[node name="Slot" type="HBoxContainer"]
+margin_right = 132.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+alignment = 1
+script = ExtResource( 1 )
+pokemon_page = ExtResource( 3 )
+
+[node name="PokemonNameShadow" type="Node2D" parent="."]
+
+[node name="Shadow" type="Label" parent="PokemonNameShadow"]
+margin_left = 43.0
+margin_top = 6.0
+margin_right = 143.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 100, 21 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Aaaa"
+valign = 1
+
+[node name="PokemonSprite" type="TextureRect" parent="."]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+expand = true
+
+[node name="VContainer" type="VBoxContainer" parent="."]
+margin_left = 36.0
+margin_right = 136.0
+margin_bottom = 32.0
+alignment = 1
+
+[node name="PokemonName" type="Button" parent="VContainer"]
+margin_top = 5.0
+margin_right = 100.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 100, 14 )
+focus_mode = 0
+mouse_filter = 1
+custom_fonts/font = SubResource( 1 )
+enabled_focus_mode = 0
+text = "Aaaa"
+flat = true
+align = 0
+icon_align = 1
+
+[node name="IdContainer" type="VBoxContainer" parent="."]
+margin_left = 140.0
+margin_right = 172.0
+margin_bottom = 32.0
+alignment = 1
+
+[node name="PokemonId" type="Label" parent="IdContainer"]
+margin_top = 8.0
+margin_right = 32.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 32, 0 )
+mouse_filter = 1
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "#1"
+valign = 1
+
+[node name="Request" type="HTTPRequest" parent="."]
+
+[connection signal="pressed" from="VContainer/PokemonName" to="." method="on_button_pressed"]
