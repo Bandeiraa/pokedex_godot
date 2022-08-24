@@ -56,8 +56,11 @@ func get_pokemon_data(_result: int, _response_code: int, _headers: PoolStringArr
 	emit_signal("kill_request")
 	
 	var serialized_data: Dictionary = parse_json(body.get_string_from_utf8())
-	var pokemon_image_path: String = serialized_data["sprites"]["front_default"]
+	var pokemon_image_path = serialized_data["sprites"]["front_default"]
 	
+	if pokemon_image_path == null:
+		return
+		
 	var new_http_request: HTTPRequest = HTTPRequest.new()
 	add_child(new_http_request)
 	
